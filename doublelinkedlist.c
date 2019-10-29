@@ -1,3 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct no{
+
+    int info;
+    struct no *prev, *next;
+
+}t_no;
+
+
 void *init(){
     return NULL;
 }
