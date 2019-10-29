@@ -13,15 +13,28 @@ void *init(){
     return NULL;
 }
 
-t_no *insert_end(t_no *list, int x){
+t_no *insert_end(t_no *last, int x){
 
     t_no *aux= (t_no *)malloc(sizeof(t_no));
 
     aux->info=x;
-    if(list) list->next=aux;
-    aux->prev=list;
+    if(last) last->next=aux;
+    aux->prev=last;
     aux->next=NULL;
+    return aux;
 }
+
+t_no *insert_begginning(t_no *first, int x){
+
+    t_no *aux= (t_no *)malloc(sizeof(t_no));
+
+    aux->info=x;
+    if(first) first->prev=aux;
+    aux->prev=NULL;
+    aux->next=first;
+    return aux;
+}
+
 
 void print_end(t_no *last){
     if(last){
@@ -48,18 +61,24 @@ void print_begginning(t_no *last){
 
 int main(){
 
-    t_no *list, *first;
+    t_no *last, *first;
 
-    list=init(list);
-    list=insert_end(list, 50);
-    list=insert_end(list, 70);
-    list=insert_end(list, 30);
-    list=insert_end(list, 40);
-    list=insert_end(list, 10);
-    list=insert_end(list, 20);
-    list=insert_end(list, 60);
-    print_end(list);
+    last=init();
+    last=insert_end(last, 50);
+    last=insert_end(last, 70);
+    last=insert_end(last, 30);
+    last=insert_end(last, 40);
+    last=insert_end(last, 10);
+    last=insert_end(last, 20);
+    last=insert_end(last, 60);
+    print_end(last);
     puts("");
-    first=return_first(list);
+    first=return_first(last);
     print_begginning(first);
+    first=insert_begginning(first, 100);
+    puts("");
+    puts("");
+    print_begginning(first);
+    puts("");
+    print_end(last);
 }
