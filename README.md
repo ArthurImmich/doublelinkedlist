@@ -1,2 +1,2 @@
 # doublelinkedlist
-just another class challange
+double linke list in C
